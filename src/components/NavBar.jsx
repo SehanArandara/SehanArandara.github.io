@@ -70,7 +70,7 @@ export const NavBar = () => {
                 </Link></li>
                 <li className='py-6 text-4xl' ><Link onClick={handleClick} to="contact" smooth={true} offset={50} duration={500} >
                     Contact Me
-                </Link> Me</li>
+                </Link></li>
             </ul>
 
             {/**social media icons */}
