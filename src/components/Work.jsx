@@ -30,7 +30,7 @@ const Work = () => {
                         utilizing Travel Box, Codegen's flagship product. <a href="https://codegen.co.uk/travelbox-platform/">[Travel Box info]</a>
                     </div>
                     <div className="text-sm">
-                        Technologies Used:
+                        Technologies Used :
                         <ul>
                             <li>Java, Spring Boot, Maven, JFrog, Jenkins</li>
                             <li>Angular, CSS</li>
