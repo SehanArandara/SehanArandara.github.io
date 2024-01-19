@@ -20,6 +20,10 @@ const Home = () => {
                         src="https://readme-typing-svg.herokuapp.com?font=Oswald&size=30&pause=1000&color=8892B0&width=435&lines=I'm+an+Undergraduate+Student+-+SLIIT"
                         alt="Typing SVG"
                     />
+                    <img
+                        src="https://readme-typing-svg.herokuapp.com/?font=Oswald&size=30&pause=1000&color=8892B0&width=435&lines=I%27m+an+Associate+Software+Engineer"
+                        alt="Typing SVG"
+                    />
                 </h2>
                 <br />
                 <div className="flex">

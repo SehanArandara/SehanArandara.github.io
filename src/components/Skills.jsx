@@ -1,7 +1,8 @@
 import React from 'react'
 import {FaReact, FaJava, FaNode, FaHtml5, FaCss3,FaPhp} from 'react-icons/fa'
-import {SiTailwindcss, SiMongodb, SiJavascript, SiPython, SiMysql, SiAdobephotoshop, SiFigma, SiIntellijidea ,SiKotlin,SiAndroidstudio} from 'react-icons/si'
+import {SiTailwindcss, SiMongodb, SiJavascript, SiPython, SiMysql, SiAdobephotoshop, SiFigma, SiIntellijidea ,SiKotlin,SiAndroidstudio,SiJfrog,SiApachemaven,SiSpringboot} from 'react-icons/si'
 import {TbBrandVisualStudio, } from 'react-icons/tb'
+import { FaAngular,FaJenkins } from 'react-icons/fa';
 
 
 
@@ -13,13 +14,12 @@ const Skills = () => {
         <div className='flex flex-wrap justify-center items-center px-8  gap-4 lg:gap-8 lg:pt-16 mt-6  '>
           
           <FaJava size={50} color='white' className='m-3 hover:bg-[#2342a1]  p-2 transition-all'/>
-          <SiJavascript size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
-
+          <SiSpringboot size={50} color='white' />
+            <FaAngular size={50} color='white'/>
+          <SiJavascript size={50} color='white' className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
           <FaReact size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
           <FaNode size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
           <SiMongodb size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
-          
-          
           <SiPython size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
           <FaHtml5 size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
           <FaCss3 size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
@@ -30,6 +30,10 @@ const Skills = () => {
 
           <SiKotlin size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
           <FaPhp size={50} color='white'className='m-3  hover:bg-[#2342a1]  p-2 transition-all'/>
+
+          <SiJfrog size={50} color='white'/>
+            <SiApachemaven size={50} color='white' />
+            <FaJenkins size={50} color='white' />
 
         </div>
 
