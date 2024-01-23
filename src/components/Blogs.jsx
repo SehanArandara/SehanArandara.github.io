@@ -3,6 +3,7 @@ import SingleProject from './SingleProject'
 import travely from "../Assets/travely.png"
 import helpDesk from "../Assets/help desk.png"
 import eduX from "../Assets/eduX.png"
+import skill from "../Assets/skill.png"
 
 
 
@@ -16,6 +17,12 @@ const Blogs = () => {
             desc = "Travely is an innovative startup that offers a comprehensive travel and tourism management system. The system simplifies the process of booking and managing travel by providing a one-stop shop website where travellers can easily organize their trips, and book hotels, rental cars, restaurants, events, tour packages, and customized tours."
             image = {travely}
             url = "https://github.com/SehanArandara/Travely-2Y2S-ITP-project"
+          />
+          <SingleProject
+            topic = "Skill Span - MERN Project"
+            desc = " Bridging the Gap Between Academia and Industry in Software Engineering"
+            image = {skill}
+            url = "https://github.com/SehanArandara/SkillSpan_V3?tab=readme-ov-filet"
           />
           <SingleProject
                topic = "Online Help Desk - Java / Java Serverlet"
