@@ -3,6 +3,7 @@ import MyFace from "../Assets/MyFace.jpg"
 import { FaLinkedin } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { BsFillFilePersonFill } from 'react-icons/bs'
+import DP from "../Assets/DP.jpg"
 import { ImWhatsapp } from 'react-icons/im'
 import { AiFillGithub } from 'react-icons/ai'
 
@@ -15,7 +16,7 @@ const AboutMe = () => {
             
             <div className='lg:flex justify-center text-gray-300 lg:w-[1200px] mx-auto lg:mt-0'>
                 <div className='mx-auto lg:mx-0 lg:self-center'>
-                    <img src={MyFace} className='w-64 md:w-80 lg:w-[1200px] mx-auto rounded' alt='sehan' />
+                    <img src={DP} className='w-64 md:w-80 lg:w-[1200px] mx-auto rounded' alt='sehan' />
                 </div>
 
                 <div className='lg:ml-12 flex flex-col justify-between p-4'>
@@ -23,7 +24,7 @@ const AboutMe = () => {
                     <p className=' text-justify lg:p-0 mt-5 '>As an undergraduate student pursuing a BSc (Hons) in Information Technology
 with a specialization in Software Engineering at the Sri Lankan Institute of
 Information Technology (SLIIT), I am seeking opportunities to leverage my
-strong coding skills and 6 months of industry experience to contribute to
+strong coding skills and 12 months of industry experience to contribute to
 meaningful projects within a dynamic team.
                     </p>
 
