@@ -1,9 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
 
 @layer base {
     body {
@@ -12,6 +11,6 @@
 
     li {
         @apply px-4;
-        @apply cursor-pointer
+        @apply cursor-pointer;
     }
 }

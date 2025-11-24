@@ -1,108 +1,114 @@
-import React, { useState } from 'react'
-import logo from '../Assets/logo.jpg'
-import { FaBars, FaTimes, FaLinkedin } from 'react-icons/fa'
-import { HiOutlineMail } from 'react-icons/hi'
-import { BsFillFilePersonFill } from 'react-icons/bs'
-import { AiFillGithub } from 'react-icons/ai'
-import { Link } from 'react-scroll'
-import resume from "../Assets/resume.pdf"
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Download } from 'lucide-react';
+import { Link } from 'react-scroll';
+import resume from '../Assets/resume.pdf';
 
-export const NavBar = () => {
+const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-    const [nav, setNav] = useState(false)
-    const handleClick = () => setNav(!nav)
+    // Handle scroll effect
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
+    const navLinks = [
+        { name: 'Home', to: 'home' },
+        { name: 'About', to: 'aboutme' },
+        { name: 'Experience', to: 'work' },
+        { name: 'Projects', to: 'blogs' },
+        { name: 'Teaching', to: 'teaching' },
+        { name: 'Contact', to: 'contact' },
+    ];
 
     return (
-        <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300'>
-            
-            {/**menu */}
+        <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/10 shadow-lg' : 'bg-transparent'
+            }`}>
+            <div className="container mx-auto px-6 h-20 flex justify-between items-center">
 
-            <ul className='hidden md:flex '>
-                <li>
-                    <Link to="home" smooth={true} offset={50} duration={500} >
-                        Home
+                {/* Logo */}
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="text-2xl font-bold font-sans cursor-pointer"
+                >
+                    <Link to="home" smooth={true} duration={500}>
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">
+                            SA
+                        </span>
                     </Link>
-                </li>
-                <li>
-                    <Link to="aboutme" smooth={true} offset={50} duration={500} >
-                        About
-                    </Link>
-                </li>
+                </motion.div>
 
-                <li>
-                    <Link to="skills" smooth={true} offset={50} duration={500} >
-                        Skills
-                    </Link>
-                </li>
-                <li>
-                    <Link to="blogs" smooth={true} offset={50} duration={500} >
-                        Projects
-                    </Link>
-                </li>
-                <li>
-                    <li>
-                        <Link to="contact" smooth={true} offset={50} duration={500} >
-                            Contact Me
+                {/* Desktop Menu */}
+                <div className="hidden md:flex items-center space-x-8">
+                    {navLinks.map((link, index) => (
+                        <Link
+                            key={index}
+                            to={link.to}
+                            smooth={true}
+                            duration={500}
+                            offset={-80}
+                            className="relative group text-slate-300 hover:text-white text-sm font-medium cursor-pointer transition-colors"
+                        >
+                            {link.name}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full" />
                         </Link>
-                    </li>
-                </li>
-            </ul>
+                    ))}
 
-            <div onClick={handleClick} className='md:hidden z-10'>
-                {!nav ? <FaBars /> : <FaTimes />}
+                    <a href={resume} download>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 transition-colors text-sm font-medium"
+                        >
+                            Resume <Download size={16} />
+                        </motion.button>
+                    </a>
+                </div>
+
+                {/* Mobile Menu Toggle */}
+                <div className="md:hidden text-white cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                </div>
             </div>
 
-            <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'}>
-                <li className='py-6 text-4xl' ><Link  onClick={handleClick}to="home" smooth={true} offset={50} duration={500} >
-                    Home
-                </Link></li>
-                <li className='py-6 text-4xl' ><Link onClick={handleClick} to="aboutme" smooth={true} offset={50} duration={500} >
-                    About
-                </Link></li>
-                <li className='py-6 text-4xl' ><Link onClick={handleClick} to="skills" smooth={true} offset={50} duration={500} >
-                    Skills
-                </Link></li>
-                <li className='py-6 text-4xl' ><Link onClick={handleClick} to="blogs" smooth={true} offset={50} duration={500} >
-                    Projects
-                </Link></li>
-                <li className='py-6 text-4xl' ><Link onClick={handleClick} to="contact" smooth={true} offset={50} duration={500} >
-                    Contact Me
-                </Link></li>
-            </ul>
-
-            {/**social media icons */}
-
-            <div className='hidden md:flex fixed flex-col top-[35%] left-0'>
-                <ul>
-                    <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600'>
-                        <a className="flex justify-between items-center w-full text-gray-300"
-                            href='https://www.linkedin.com/in/sehan-arandara-1313b5218/'>
-                            LinkedIn <FaLinkedin size={30} />
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="absolute top-20 left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/10 md:hidden flex flex-col items-center py-8 space-y-6 shadow-2xl"
+                    >
+                        {navLinks.map((link, index) => (
+                            <Link
+                                key={index}
+                                to={link.to}
+                                smooth={true}
+                                duration={500}
+                                offset={-80}
+                                onClick={() => setIsOpen(false)}
+                                className="text-lg text-slate-300 hover:text-cyan-400 font-medium cursor-pointer"
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                        <a href={resume} download onClick={() => setIsOpen(false)}>
+                            <button className="flex items-center gap-2 px-6 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-medium">
+                                Download Resume <Download size={18} />
+                            </button>
                         </a>
-                    </li>
-                    <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#3333]'>
-                        <a className="flex justify-between items-center w-full text-gray-300"
-                            href='https://github.com/SehanArandara'>
-                            GitHub <AiFillGithub size={30} />
-                        </a>
-                    </li>
-                    <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2b0]'>
-                        <a className="flex justify-between items-center w-full text-gray-300"
-                            href='https://mailto:sdarandara123@gmail.com'>
-                            Mail <HiOutlineMail size={30} />
-                        </a>
-                    </li>
-                    <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#565f69]'>
-                        <a className="flex justify-between items-center w-full text-gray-300"
-                            href={resume}>
-                            Resume  <BsFillFilePersonFill size={30} />
-                        </a>
-                    </li>
-                </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </nav>
+    );
+};
 
-            </div>
-
-        </div>
-    )
-}
+export default Navbar;
