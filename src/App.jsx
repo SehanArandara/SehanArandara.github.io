@@ -1,12 +1,12 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
-import Skills from "./components/Skills";
-import Teaching from "./components/Teaching";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import About from "./components/About.jsx";
+import Experience from "./components/Experience.jsx";
+import Education from "./components/Education.jsx";
+import Skills from "./components/Skills.jsx";
+import Teaching from "./components/Teaching.jsx";
+import Projects from "./components/Projects.jsx";
+import Contact from "./components/Contact.jsx";
 
 function App() {
   return (
