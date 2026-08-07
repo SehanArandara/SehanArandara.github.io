@@ -23,15 +23,15 @@ const About = () => {
         }
     };
 
-    const cardClass = "bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:border-violet-500/30 hover:bg-white/10 transition-all duration-500 group relative overflow-hidden shadow-xl";
+    const cardClass = "bg-tech-black/80 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:border-neon-cyan/50 hover:bg-white/5 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all duration-500 group relative overflow-hidden";
 
     return (
-        <section name="aboutme" className="w-full min-h-screen bg-slate-950 text-white py-24 flex items-center justify-center relative overflow-hidden">
+        <section name="aboutme" className="w-full min-h-screen bg-tech-black text-white py-24 flex items-center justify-center relative overflow-hidden">
 
             {/* Background Gradients (Matching Hero) */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-[120px]" />
+                <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[150px]" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[150px]" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -44,7 +44,7 @@ const About = () => {
                     className="mb-20 text-center"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold font-sans mb-6 tracking-tight">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-neon-purple">
                             About Me
                         </span>
                     </h2>
@@ -80,18 +80,18 @@ const About = () => {
                                 <span className="font-mono text-sm text-cyan-400 tracking-wider">developer_profile.json</span>
                             </div>
 
-                            <h3 className="text-3xl font-bold mb-6 text-white group-hover:text-cyan-400 transition-colors">
+                            <h3 className="text-3xl font-bold mb-6 text-white group-hover:text-neon-cyan transition-colors">
                                 The Coder & The Creator
                             </h3>
 
                             <p className="text-slate-300 leading-relaxed text-lg mb-6">
-                                I am a Software & AI/ML Engineer driven by impact. With over <span className="text-cyan-400 font-semibold">2 years of industry experience</span>,
+                                I am a Software & AI/ML Engineer driven by impact. With over <span className="text-neon-cyan font-semibold">2 years of industry experience</span>,
                                 I build scalable applications that solve real-world problems.
                             </p>
 
                             <p className="text-slate-300 leading-relaxed text-lg">
                                 Currently, I'm engineering next-gen travel tech at
-                                <span className="text-cyan-400 font-semibold"> Classic Travel</span>, blending Full-Stack development with Applied AI to create smarter, more efficient solutions.
+                                <span className="text-neon-cyan font-semibold"> Classic Travel</span>, blending Full-Stack development with Applied AI to create smarter, more efficient solutions.
                             </p>
                         </div>
                     </motion.div>

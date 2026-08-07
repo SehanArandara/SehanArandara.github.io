@@ -8,21 +8,21 @@ import profileImg from '../Assets/DP.jpg'; // Using DP.jpg as the profile image
 
 const Hero = () => {
     const techIcons = [
-        { icon: <FaReact size={28} />, color: "text-cyan-400", bg: "bg-cyan-400/10", position: "top-0 left-1/2 -translate-x-1/2 -translate-y-12" },
-        { icon: <FaPython size={28} />, color: "text-yellow-400", bg: "bg-yellow-400/10", position: "top-1/4 right-0 translate-x-8" },
-        { icon: <SiTensorflow size={28} />, color: "text-orange-500", bg: "bg-orange-500/10", position: "bottom-1/4 right-0 translate-x-8" },
-        { icon: <SiSpringboot size={28} />, color: "text-green-500", bg: "bg-green-500/10", position: "bottom-0 left-1/2 -translate-x-1/2 translate-y-12" },
-        { icon: <SiGoogle size={28} />, color: "text-blue-500", bg: "bg-blue-500/10", position: "bottom-1/4 left-0 -translate-x-8" },
-        { icon: <SiVisualstudiocode size={28} />, color: "text-blue-400", bg: "bg-blue-400/10", position: "top-1/4 left-0 -translate-x-8" },
+        { icon: <FaReact size={28} />, color: "text-neon-cyan", bg: "bg-neon-cyan/10", position: "top-[-10%] left-1/2 -translate-x-1/2 -translate-y-12" },
+        { icon: <FaPython size={28} />, color: "text-yellow-400", bg: "bg-yellow-400/10", position: "top-1/4 right-[-10%] translate-x-8" },
+        { icon: <SiTensorflow size={28} />, color: "text-orange-500", bg: "bg-orange-500/10", position: "bottom-1/4 right-[-10%] translate-x-8" },
+        { icon: <SiSpringboot size={28} />, color: "text-neon-green", bg: "bg-neon-green/10", position: "bottom-[-10%] left-1/2 -translate-x-1/2 translate-y-12" },
+        { icon: <SiGoogle size={28} />, color: "text-blue-500", bg: "bg-blue-500/10", position: "bottom-1/4 left-[-10%] -translate-x-8" },
+        { icon: <SiVisualstudiocode size={28} />, color: "text-neon-purple", bg: "bg-neon-purple/10", position: "top-1/4 left-[-10%] -translate-x-8" },
     ];
 
     return (
-        <section name="home" className="relative w-full min-h-screen bg-slate-950 text-white overflow-hidden flex items-center justify-center py-20 lg:py-0">
+        <section name="home" className="relative w-full min-h-screen bg-tech-black bg-tech-grid bg-grid text-white overflow-hidden flex items-center justify-center py-20 lg:py-0">
 
             {/* Background Gradients */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-fuchsia-600/20 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-neon-purple/10 rounded-full blur-[150px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[150px]" />
             </div>
 
             <div className="container mx-auto px-6 z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -52,7 +52,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-2xl font-medium text-cyan-400"
+                            className="text-2xl font-medium text-neon-cyan"
                         >
                             Hello, I'm Sehan Arandara
                         </motion.h2>
@@ -65,7 +65,7 @@ const Hero = () => {
                         >
                             <span className="text-white">Software Engineer</span>
                             <br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-green">
                                 & AI/ML Instructor
                             </span>
                         </motion.h1>
@@ -76,7 +76,7 @@ const Hero = () => {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="text-lg text-slate-400 max-w-xl leading-relaxed"
                         >
-                            Building scalable tech at <span className="text-cyan-400 font-semibold">Classic Travel</span> and empowering the next generation of AI developers.
+                            Building scalable tech at <span className="text-neon-cyan font-semibold">Classic Travel</span> and empowering the next generation of AI developers.
                             With 2+ years of industry experience, I bridge the gap between Full-Stack Engineering and Applied Machine Learning.
                         </motion.p>
                     </div>
@@ -158,9 +158,9 @@ const Hero = () => {
                                 className={`absolute ${item.position} z-20`}
                             >
                                 <motion.div
-                                    animate={{ y: [0, -15, 0] }}
+                                    animate={{ y: [0, -30, 0], x: [0, 15, 0] }}
                                     transition={{
-                                        duration: 3 + Math.random(),
+                                        duration: 4 + Math.random() * 2,
                                         repeat: Infinity,
                                         ease: "easeInOut",
                                         delay: Math.random() * 2

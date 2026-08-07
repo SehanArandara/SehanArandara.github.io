@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Smartphone, BrainCircuit, Globe, FlaskConical, Code2 } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
@@ -7,6 +7,12 @@ import ProjectModal from './ProjectModal';
 const Projects = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedProject, setSelectedProject] = useState(null);
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+    });
+
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
     const categories = ['All', 'AI & ML', 'Web App', 'Mobile', 'Research'];
 
@@ -196,42 +202,42 @@ const Projects = () => {
         : projects.filter(p => p.category === selectedCategory);
 
     return (
-        <section name="blogs" className="w-full min-h-screen bg-slate-950 text-white py-24 flex items-center justify-center relative overflow-hidden">
+        <section ref={targetRef} name="blogs" className="w-full relative h-[300vh] bg-tech-black text-white">
 
             {/* Background Gradients */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px]" />
+            <div className="absolute inset-0 overflow-hidden pointer-events-none sticky top-0 h-screen">
+                <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-neon-purple/5 rounded-full blur-[150px]" />
+                <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-neon-cyan/5 rounded-full blur-[150px]" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+            <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-12 text-center"
+                    className="mb-8 text-center z-10"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-sans mb-6 tracking-tight">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-cyan-400">
+                    <h2 className="text-4xl md:text-5xl font-bold font-sans mb-4 tracking-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-cyan">
                             Featured Projects
                         </span>
                     </h2>
                     <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                        A showcase of my work spanning AI/ML, full-stack development, and innovative solutions.
+                        A showcase of my work spanning AI/ML, full-stack development, and innovative solutions. Scroll to explore.
                     </p>
                 </motion.div>
 
                 {/* Filter Tabs */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <div className="flex flex-wrap justify-center gap-3 mb-12 z-10">
                     {categories.map((category) => (
                         <button
                             key={category}
                             onClick={() => setSelectedCategory(category)}
                             className={`px-6 py-2 rounded-full font-medium transition-all ${selectedCategory === category
-                                    ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/25'
-                                    : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/10'
+                                    ? 'bg-neon-cyan text-black shadow-[0_0_15px_rgba(0,240,255,0.5)] font-bold'
+                                    : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/10 hover:border-neon-cyan/50'
                                 }`}
                         >
                             {category}
@@ -239,15 +245,16 @@ const Projects = () => {
                     ))}
                 </div>
 
-                {/* Projects Grid */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Horizontal Scroll Track */}
+                <motion.div style={{ x }} className="flex gap-8 px-10 w-max pb-20">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
-                            <ProjectCard
-                                key={project.id}
-                                project={project}
-                                onClick={() => setSelectedProject(project)}
-                            />
+                            <div key={project.id} className="w-[350px] md:w-[450px] flex-shrink-0">
+                                <ProjectCard
+                                    project={project}
+                                    onClick={() => setSelectedProject(project)}
+                                />
+                            </div>
                         ))}
                     </AnimatePresence>
                 </motion.div>

@@ -47,20 +47,20 @@ const Skills = () => {
 
   const getColorClasses = (color) => {
     const colors = {
-      blue: "bg-blue-500/10 text-blue-300 border-blue-500/20 hover:border-blue-500/50",
-      violet: "bg-violet-500/10 text-violet-300 border-violet-500/20 hover:border-violet-500/50",
-      amber: "bg-amber-500/10 text-amber-300 border-amber-500/20 hover:border-amber-500/50"
+      blue: "bg-neon-cyan/10 text-neon-cyan border-neon-cyan/20 hover:border-neon-cyan/50 hover:shadow-[0_0_10px_rgba(0,240,255,0.3)]",
+      violet: "bg-neon-purple/10 text-neon-purple border-neon-purple/20 hover:border-neon-purple/50 hover:shadow-[0_0_10px_rgba(176,38,255,0.3)]",
+      amber: "bg-neon-green/10 text-neon-green border-neon-green/20 hover:border-neon-green/50 hover:shadow-[0_0_10px_rgba(57,255,20,0.3)]"
     };
     return colors[color] || colors.blue;
   };
 
   return (
-    <section name="skills" className="w-full min-h-screen bg-slate-950 text-white py-24 flex items-center justify-center relative overflow-hidden">
+    <section name="skills" className="w-full min-h-screen bg-tech-black text-white py-24 flex items-center justify-center relative overflow-hidden">
 
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[30%] left-[20%] w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[100px]" />
+        <div className="absolute top-[30%] left-[20%] w-[400px] h-[400px] bg-neon-cyan/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-neon-purple/5 rounded-full blur-[150px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
@@ -73,7 +73,7 @@ const Skills = () => {
           className="mb-20 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-sans mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-amber-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-green">
               Skills & Expertise
             </span>
           </h2>
@@ -93,12 +93,12 @@ const Skills = () => {
               transition={{ delay: index * 0.2 }}
               onMouseEnter={() => setHoveredCategory(category.id)}
               onMouseLeave={() => setHoveredCategory(null)}
-              className={`relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 transition-all duration-500 ${hoveredCategory && hoveredCategory !== category.id ? 'opacity-40 scale-95 blur-[1px]' : 'opacity-100 scale-100'
-                } hover:border-white/20 hover:shadow-2xl hover:shadow-${category.color}-500/10`}
+              className={`relative bg-tech-black/50 backdrop-blur-md border border-white/5 rounded-3xl p-8 transition-all duration-500 ${hoveredCategory && hoveredCategory !== category.id ? 'opacity-40 scale-95 blur-[1px]' : 'opacity-100 scale-100'
+                } hover:border-neon-purple/50 hover:shadow-[0_0_15px_rgba(176,38,255,0.3)]`}
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className={`p-3 rounded-2xl bg-${category.color}-500/10 border border-${category.color}-500/20`}>
+                <div className={`p-3 rounded-2xl bg-white/5 border border-white/10`}>
                   {category.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white">{category.title}</h3>
