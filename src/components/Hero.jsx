@@ -4,7 +4,10 @@ import { ArrowRight, Mail, Download, Sparkles, ExternalLink } from 'lucide-react
 import { FaReact, FaPython, FaBrain } from 'react-icons/fa';
 import { SiSpringboot, SiGoogle, SiVisualstudiocode, SiTensorflow } from 'react-icons/si';
 import { Link } from 'react-scroll';
+import { TypeAnimation } from 'react-type-animation';
+import { Tilt } from 'react-tilt';
 import profileImg from '../Assets/DP.jpg'; // Using DP.jpg as the profile image
+import ParticlesBackground from './ParticlesBackground';
 
 const Hero = () => {
     const techIcons = [
@@ -18,6 +21,7 @@ const Hero = () => {
 
     return (
         <section name="home" className="relative w-full min-h-screen bg-tech-black bg-tech-grid bg-grid text-white overflow-hidden flex items-center justify-center py-20 lg:py-0">
+            <ParticlesBackground />
 
             {/* Background Gradients */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -61,13 +65,23 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-5xl lg:text-7xl font-bold tracking-tight font-sans leading-tight"
+                            className="text-5xl lg:text-7xl font-bold tracking-tight font-sans leading-tight h-[120px] lg:h-[180px] flex flex-col justify-center"
                         >
-                            <span className="text-white">Software Engineer</span>
-                            <br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-green">
-                                & AI/ML Instructor
-                            </span>
+                            <TypeAnimation
+                                sequence={[
+                                    'Software Engineer\n& AI/ML Instructor',
+                                    1000,
+                                    'Software Engineer\n& AI/ML Instructor',
+                                    1000,
+                                    'Software Engineer\n& AI/ML Instructor',
+                                    1000
+                                ]}
+                                wrapper="span"
+                                speed={50}
+                                style={{ display: 'inline-block', whiteSpace: 'pre-line' }}
+                                repeat={Infinity}
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-green"
+                            />
                         </motion.h1>
 
                         <motion.p
@@ -134,19 +148,21 @@ const Hero = () => {
                         />
 
                         {/* Profile Image */}
-                        <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.8 }}
-                            className="absolute inset-4 z-10 rounded-[2rem] overflow-hidden border-2 border-white/10 bg-slate-900 shadow-2xl"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 z-20 mix-blend-overlay" />
-                            <img
-                                src={profileImg}
-                                alt="Sehan Arandara"
-                                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 ease-in-out"
-                            />
-                        </motion.div>
+                        <Tilt options={{ max: 25, scale: 1.05, speed: 400 }} className="absolute inset-4 z-10">
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.8 }}
+                                className="w-full h-full rounded-[2rem] overflow-hidden border-2 border-white/10 bg-slate-900 shadow-2xl"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 z-20 mix-blend-overlay" />
+                                <img
+                                    src={profileImg}
+                                    alt="Sehan Arandara"
+                                    className="w-full h-full object-cover transition-transform duration-700 ease-in-out"
+                                />
+                            </motion.div>
+                        </Tilt>
 
                         {/* Floating Icons */}
                         {techIcons.map((item, index) => (

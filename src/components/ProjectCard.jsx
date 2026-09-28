@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { Tilt } from 'react-tilt';
 
 const ProjectCard = ({ project, onClick }) => {
     const getIconColor = (category) => {
@@ -23,6 +24,18 @@ const ProjectCard = ({ project, onClick }) => {
         return gradients[category] || 'from-slate-500/10 to-slate-600/10';
     };
 
+    const defaultOptions = {
+        reverse:        false,  // reverse the tilt direction
+        max:            15,     // max tilt rotation (degrees)
+        perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
+        scale:          1.02,    // 2 = 200%, 1.5 = 150%, etc..
+        speed:          1000,   // Speed of the enter/exit transition
+        transition:     true,   // Set a transition on enter/exit.
+        axis:           null,   // What axis should be disabled. Can be X or Y.
+        reset:          true,    // If the tilt effect has to be reset on exit.
+        easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+    }
+
     return (
         <motion.div
             layout
@@ -30,9 +43,10 @@ const ProjectCard = ({ project, onClick }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             whileHover={{ y: -5 }}
-            className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all cursor-pointer group"
-            onClick={onClick}
+            className="h-full"
         >
+          <Tilt options={defaultOptions} className="h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all cursor-pointer group" >
+            <div onClick={onClick} className="h-full">
             {/* Visual Header */}
             <div className={`relative h-40 bg-gradient-to-br ${getGradient(project.category)} flex items-center justify-center overflow-hidden`}>
                 <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -72,6 +86,8 @@ const ProjectCard = ({ project, onClick }) => {
                     View Details <ExternalLink size={14} />
                 </button>
             </div>
+            </div>
+          </Tilt>
         </motion.div>
     );
 };
